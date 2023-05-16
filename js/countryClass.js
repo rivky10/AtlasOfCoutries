@@ -48,18 +48,16 @@ export default class CountryClass {
         div.innerHTML = `
         <div class="row g-0 justify-content-between">
             <div class="col-md-6">
-            <img src="${this.flag}" class="img-fluid rounded-start img-flag" alt="${this.name}">
+                <img src="${this.flag}" class="img-fluid rounded-start img-flag" alt="${this.name}">
             </div>
-            <div class="col-md-6 d-flex align-items-center"">
-            <div class="card-body">
+            <div class="card-body col-md-6">
                 <h2 class="card-title">${this.name}</h2>
                 <div class="card-text"><u>Population:</u> ${this.pop}</div>
                 <div class="card-text"><u>Region:</u> ${this.region}</div>
-                <div class="card-text"><u>Languages:</u> ${this.languages}</div>
+                <div class="card-text text-wrap"><u>Languages:</u> ${this.languages}</div>
                 <div class="card-text"><u>Coin:</u> ${this.coin}, ${this.coinDescription}</div>
                 <div class="card-text"><u>Capital:</u> ${this.capital}</div>
                 <div id="id_borders" class="card-text"><u>Borders:</u> </div>
-            </div>
             </div>
         </div>
 
