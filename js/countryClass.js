@@ -71,17 +71,26 @@ export default class CountryClass {
             id_borders.innerHTML += "There is no borders"
         }
         console.log(this.borders);
-        this.borders.forEach(async (element, i) => {
+        let i = 0;
+        this.borders.forEach(async (element) => {
            let countryByCode = await this.getCountryByCode(element);
            console.log(countryByCode[0].name.common);
            let span = document.createElement("span");
-           span.innerHTML = `${countryByCode[0].name.common} `;
-        //    if (i < this.borders.length - 1){
-        //     span.innerHTML += " | "
-        //    }
+           span.innerHTML = `${countryByCode[0].name.common}`;
            span.style.cursor = "pointer";
            span.style.color = "rgb(1, 74, 1)";
            id_borders.append(span);
+           if (i < this.borders.length - 1){
+            let s = document.createElement("span");
+            s.innerHTML = " | ";
+            s.style.color = "rgb(1, 74, 1)";
+            span.append(s);
+            s.style.fontWeight = "normal";
+            i++;
+           } 
+           else {
+            span.innerHTML += ".";
+           }
            
            span.addEventListener("click", () => {
             this.createCountry(countryByCode[0].name.common);
