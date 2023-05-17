@@ -16,7 +16,6 @@ export const doApi = async () => {
             arr_name_countries.push(element.getAttribute("data-country"));
         });
         createCountriesStart();
-        // console.log(arr_name_countries);
         showSelect();
     } catch (error) {
         console.log(error);
@@ -24,6 +23,7 @@ export const doApi = async () => {
 
 }
 
+//func to get country by code 
 export const getCountryByCode = async(_code_country) => {
     try{
         let url = `https://restcountries.com/v3.1/alpha/${_code_country}`;
@@ -36,18 +36,17 @@ export const getCountryByCode = async(_code_country) => {
     }
 }
 
+//func to create country
 export const createCountry = (_name_country) => {
     document.querySelector("#id_parent").innerHTML = "";
     let country_data = counties_ar.find(c => c.name.common.toLowerCase() == _name_country.toLowerCase())
-    // console.log(counties_ar);
-    // console.log(country_data);
     let country = new CountryClass("#id_parent", country_data, createCountry, getCountryByCode);
     country.render();
 }
 
+//func to create country card
 export const createCountriesCards = (_input) => {
     document.querySelector("#id_parent").innerHTML = "";
-    console.log(_input);
     let arr = counties_ar.filter((item) =>
         item.name.common.toLowerCase().includes(_input.toLowerCase())
   );
@@ -66,6 +65,7 @@ export const createCountriesCards = (_input) => {
   }
 }
 
+//func to create cards in homePage
 export const createCountriesStart = () => {
     document.querySelector("#id_parent").innerHTML = "";
 
@@ -79,6 +79,7 @@ export const createCountriesStart = () => {
   });
 }
 
+//func to create options in select;
 export const showSelect = () => {
     let select_box = document.querySelector("#id_select");
     counties_ar.forEach(item => {
