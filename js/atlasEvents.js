@@ -7,10 +7,11 @@ export const declareEvents = () => {
         createCountriesCards(search_value);
     })
 
-    let a = document.querySelectorAll("a");
+    let a = document.querySelectorAll(".a-link");
     a.forEach(element => {
          element.addEventListener("click", () => {
-        let name = element.getAttribute("data-country'");
+        let name = element.getAttribute("data-country");
+        console.log(name);
         createCountry(name);
     })
     });

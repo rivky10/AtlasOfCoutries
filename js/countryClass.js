@@ -17,7 +17,7 @@ export default class CountryClass {
         // this.shortTofullCountry = shortTofullCountry
     }
 
-    renderCountry(){
+    renderCountry() {
         document.querySelector(this.parent).className = "row row-cols-1 row-cols-md-3 g-4 justify-content-center mt-5";
         let div = document.createElement("div");
         div.className = "col";
@@ -38,7 +38,7 @@ export default class CountryClass {
         })
     }
 
-    render(){
+    render() {
         document.querySelector(this.parent).innerHTML = "";
         document.querySelector(this.parent).className = "w-75 m-auto mt-5";
         let div = document.createElement("div");
@@ -65,35 +65,36 @@ export default class CountryClass {
         `
 
         let id_borders = div.querySelector("#id_borders");
-        if(this.borders == null) {
+        if (this.borders == null) {
             id_borders.innerHTML += "There is no borders"
         }
-        console.log(this.borders);
-        let i = 0;
-        this.borders.forEach(async (element) => {
-           let countryByCode = await this.getCountryByCode(element);
-           console.log(countryByCode[0].name.common);
-           let span = document.createElement("span");
-           span.innerHTML = `${countryByCode[0].name.common}`;
-           span.style.cursor = "pointer";
-           span.style.color = "rgb(1, 74, 1)";
-           id_borders.append(span);
-           if (i < this.borders.length - 1){
-            let s = document.createElement("span");
-            s.innerHTML = " | ";
-            s.style.color = "rgb(1, 74, 1)";
-            span.append(s);
-            s.style.fontWeight = "normal";
-            i++;
-           } 
-           else {
-            span.innerHTML += ".";
-           }
-           
-           span.addEventListener("click", () => {
-            this.createCountry(countryByCode[0].name.common);
-           })
-        });
+        else {
+            let i = 0;
+            this.borders.forEach(async (element) => {
+                let countryByCode = await this.getCountryByCode(element);
+                console.log(countryByCode[0].name.common);
+                let span = document.createElement("span");
+                span.innerHTML = `${countryByCode[0].name.common}`;
+                span.style.cursor = "pointer";
+                span.style.color = "rgb(1, 74, 1)";
+                id_borders.append(span);
+                if (i < this.borders.length - 1) {
+                    let s = document.createElement("span");
+                    s.innerHTML = " | ";
+                    s.style.color = "rgb(1, 74, 1)";
+                    span.append(s);
+                    s.style.fontWeight = "normal";
+                    i++;
+                }
+                else {
+                    span.innerHTML += ".";
+                }
 
+                span.addEventListener("click", () => {
+                    this.createCountry(countryByCode[0].name.common);
+                })
+            });
+
+        }
     }
 }
